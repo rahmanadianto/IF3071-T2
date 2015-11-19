@@ -10,10 +10,10 @@ public class DistanceTable {
 	private int size;
 	private int idxAv;
 	public DistanceTable(int size) {
-		setDist(new DistElem[size]);
+		setDist(new DistElem[size+1]);
 		idxAv = 0;
 		this.setSize(size);
-		for(int i = 0; i < size; i++) {
+		for(int i = 0; i < size+1; i++) {
 			dist[i] = new DistElem();
 		}
 	}
@@ -21,23 +21,39 @@ public class DistanceTable {
 		if (idxAv == 0) {
 			dist[0].className = classN;
 			dist[0].distance = dis;
+			
 		} else {
-			int i = idxAv;
-			boolean find = dis >= dist[i-1].distance;
-			while (i > 1 && !find) {
-				dist[i].className = dist[i-1].className;
-				dist[i].distance = dist[i-1].distance;
+			int i = idxAv-1;
+			boolean find = dis > dist[i].distance;
+			boolean fl = !find;
+			while (i >= 0 && !find) {
+				dist[i+1].className = dist[i].className;
+				dist[i+1].distance = dist[i].distance;
 				i--;
-				find = dis > dist[i-1].distance;
+				fl = true;
+				if(i >= 0) {
+					find = dis > dist[i].distance;	
+				} else {
+					find = true;
+					
+				}	
 			}
-			dist[i].className = classN;
-			dist[i].distance = dis;
+			if (fl) {
+				dist[i+1].className = classN;
+				dist[i+1].distance = dis;
+				
+			}
+			
+			
 		}
-		if (idxAv < size-1) {
+		if (idxAv < size) {
 			idxAv++;
 		}
 		
+		
+		
 	}
+	
 	public String getMostClassFreq() {
 		classFreq cf[] = new classFreq[size];
 		int last = 0;
@@ -57,15 +73,15 @@ public class DistanceTable {
 		classFreq cfmax = new classFreq();
 		cfmax.className = "";
 		cfmax.freq = 0;
-		for(int i = 0; i < last-1; i++) {
+		for(int i = 0; i < last; i++) {	
 			if(cf[i].freq > cfmax.freq) {
 				cfmax.freq = cf[i].freq;
 				cfmax.className = cf[i].className;
 			}
 		}
+		
 		return cfmax.className;
 	}
-	
 	
 	public DistElem[] getDist() {
 		return dist;

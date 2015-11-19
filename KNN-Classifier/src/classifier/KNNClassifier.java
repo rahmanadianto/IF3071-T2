@@ -12,6 +12,7 @@ import weka.core.Instances;
  */
 public class KNNClassifier {
 	private ArrayList<Instance> ListInstance;
+	
 	private int k = 5;
 	public KNNClassifier() {
 		ListInstance = new ArrayList<Instance>();
@@ -29,11 +30,11 @@ public class KNNClassifier {
 		int size = ListInstance.size();
 		DistanceTable DT = new DistanceTable(k);
 		for(int i = 0; i < size; i++) {
-			String className = ListInstance.get(i).stringValue(ListInstance.get(i).classIndex());
+			String className = ListInstance.get(i).toString(ListInstance.get(i).classIndex());
 			int distance = getDistance(ListInstance.get(i),ins);
+		
 			DT.add(className, distance);
 		}
-		
 		return DT.getMostClassFreq();
 	}
 	
@@ -57,4 +58,17 @@ public class KNNClassifier {
 		}
 		return ListIns;
 	}
+	
+	public ArrayList<Instance> getData() {
+		return ListInstance;
+	}
+	public void setListInstance(ArrayList<Instance> LI) {
+		ListInstance = LI;
+	}
+	public void SetK(int _K) {
+		this.k = _K;
+	}
+	
+
+
 }
