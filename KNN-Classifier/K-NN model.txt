@@ -1,0 +1,23 @@
+K-NN Classification Full Training
+K = 3
+Jumlah instans = 14
+Jumlah benar = 12
+Jumlah salah = 2
+Persentase kebenaran = 85.71428571428571
+Persentase kesalahan = 14.285714285714286
+
+Data
+sunny,hot,high,FALSE,no
+sunny,hot,high,TRUE,no
+overcast,hot,high,FALSE,yes
+rainy,mild,high,FALSE,yes
+rainy,cool,normal,FALSE,yes
+rainy,cool,normal,TRUE,no
+overcast,cool,normal,TRUE,yes
+sunny,mild,high,FALSE,no
+sunny,cool,normal,FALSE,yes
+rainy,mild,normal,FALSE,yes
+sunny,mild,normal,TRUE,yes
+overcast,mild,high,TRUE,yes
+overcast,hot,normal,FALSE,yes
+rainy,mild,high,TRUE,no

@@ -13,9 +13,10 @@ import weka.core.Instances;
 public class KNNClassifier {
 	private ArrayList<Instance> ListInstance;
 	
-	private int k = 5;
+	private int k;
 	public KNNClassifier() {
 		ListInstance = new ArrayList<Instance>();
+		k = 3;
 	}
 	public KNNClassifier(Instances ins, int k) {
 		ListInstance = getListInstance(ins);
@@ -69,6 +70,8 @@ public class KNNClassifier {
 		this.k = _K;
 	}
 	
-
+	public int getK() {
+		return k;
+	}
 
 }

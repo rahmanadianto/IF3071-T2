@@ -69,13 +69,14 @@ public class CrossValidation {
 		foldTable = new int[numData];
 		//inisialisasi fold table
 		int k = remain;
+		int sred = (fold - remain)/2;
 		int numFold = 1;
 		for(int i = 0; i < numData; i++) {
 			for(int j = 0; j < dataPerFold; j++) {
 				foldTable[i] = numFold;
 				if(k>0) i++;
 			}
-			if(k > 0) {
+			if(k > 0 && i > sred) {
 				foldTable[i] = numFold;
 				k--;
 			}
