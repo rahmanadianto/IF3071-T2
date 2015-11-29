@@ -1,5 +1,10 @@
 package classifier;
-
+/**
+ * *
+ * @author Muhtar Hartopo
+ * NIM : 13513068
+ *
+ */
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
 /**

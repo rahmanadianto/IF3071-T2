@@ -1,5 +1,10 @@
 package classifier;
-
+/**
+ * *
+ * @author Muhtar Hartopo
+ * NIM : 13513068
+ *
+ */
 import java.util.ArrayList;
 
 import weka.core.Instance;
@@ -83,7 +88,18 @@ public class CrossValidation {
 			numFold++;
 		}
 	}	
-		
+	public String getModel() {
+		double percT = (double) nTrue*100/numData;
+		double percF = (double) nFalse*100/numData;
+		String S ="K-NN Classification " + Integer.toString(fold)+ "-CrossValidation\n";
+		S += "K = " + Integer.toString(kc.getK()) + "\n"
+				+ "Jumlah instans = " + Integer.toString(numData) + "\n"
+				+ "Jumlah benar = " + Integer.toString(nTrue)+"\n"
+				+ "Jumlah salah = " + Integer.toString(nFalse)+ "\n"
+				+ "Persentase kebenaran = " + Double.toString(percT) + "\n"
+				+ "Persentase kesalahan = " + Double.toString(percF) + "\n";
+		return S;
+	}	
 	public int getnumData() {
 		return numData;
 	}	

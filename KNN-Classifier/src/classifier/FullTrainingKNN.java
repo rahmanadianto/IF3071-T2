@@ -5,8 +5,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-
 import weka.core.Instance;
 /**
  * *
@@ -58,6 +56,10 @@ public class FullTrainingKNN {
 		return numData;
 	}
 	public void writeModel() {
+		String S = getModel();
+		writeFile(S,"K-NN model.txt");
+	}
+	public String getModel() {
 		double percT = (double) nTrue*100/numData;
 		double percF = (double) nFalse*100/numData;
 		String S ="K-NN Classification Full Training\n";
@@ -67,14 +69,8 @@ public class FullTrainingKNN {
 				+ "Jumlah salah = " + Integer.toString(nFalse)+ "\n"
 				+ "Persentase kebenaran = " + Double.toString(percT) + "\n"
 				+ "Persentase kesalahan = " + Double.toString(percF) + "\n";
-		ArrayList<Instance> instances = kc.getData();
-		S += "\nData\n";
-		for(int i = 0; i < numData; i++) {
-			S+= instances.get(i).toString() + "\n";
-		}
-		writeFile(S,"K-NN model.txt");
+		return S;
 	}
-	
 	private void writeFile(String content, String fileName) {
 		try {
 
